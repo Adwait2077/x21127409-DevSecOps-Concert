@@ -1,0 +1,215 @@
+{% extends 'Admintemplates/index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">	
+	<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+						<div class="form-title">
+							<h4>All Booking Search Between Dates</h4>
+						</div>
+
+			<div class="form-body">
+				<form action="" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-12 agileits_agile_about_mail_left">
+						<label>From Date</label>
+                        <input  class="form-control" type="date" name="d1" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+                <div class="row">
+                    <div class="col-md-12 agileits_agile_about_mail_left">
+						<label>To Date</label>
+                        <input  class="form-control" type="date" name="d2" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+            
+
+
+                    
+					<div class="submit pull-right">
+						<input  class="form-control btn btn-primary mb-2" type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+
+            {% if book %}
+
+
+<h4 align="center" style="color:blue">Report from {{d1}} to {{d2}}</h4>
+
+<table id="example" class="display table" style="width:100%">
+        <thead class="table-light">
+            <tr>
+                <th>Booking Id</th>
+                <th>User</th>
+                <th>Game</th>
+                <th>Booking Date</th>
+                <th>Booking For</th>
+                <th>Total Seats</th>
+                <th>Total Price</th>
+                <th>Seat Type</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in book %}
+            <tr>
+                <td>{{i.booking_id}}</td>
+                <td>
+                <!-- Modal -->
+<div id="myModal-{{forloop.counter}}" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">User Information</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+            <tr>
+                <th>Username</th>
+                <td style="width:25%">{{i.user.username}}</td>
+                <th></th>
+                <td style="width:25%"><img src="{{i.user.stadium_profile_set.all.0.images.url}}" style="width:100px;height:80px"/></td>
+            </tr>
+
+
+            <tr>
+                <th>Full Name</th>
+                <td style="width:25%">{{i.user.first_name}} {{i.user.last_name}}</td>
+                <th>Email</th>
+                <td style="width:25%">{{i.user.email}}</td>
+            </tr>
+            <tr>
+                <th>Contact No.</th>
+                <td style="width:25%">{{i.user.stadium_profile_set.all.0.contact_no}}</td>
+                <th>Address</th>
+                <td style="width:25%">{{i.user.stadium_profile_set.all.0.address}}</td>
+
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+              <a href="#" data-toggle="modal" data-target="#myModal-{{forloop.counter}}">{{i.user.username}}</a></td>
+<td>
+
+
+<a href="#" data-toggle="modal" data-target="#tyModal-{{forloop.counter}}">{{i.game.game_name}}</a>
+
+
+<div id="tyModal-{{forloop.counter}}" style="width:100%" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Game Information</h4>
+      </div>
+      <div class="modal-body">
+        <table>
+            <tr>
+                <th>Game Name</th>
+                <td style="width:25%">{{i.game.game_name}}</td>
+                <th>Game image</th>
+                <td style="width:25%"><img src="{{i.game.image.url}}" style="width:100px;height:80px"/></td></td>
+            </tr>
+
+            <tr style="height:30px">
+                <th>Total Seats</th>
+                <td style="width:25%">{{i.game.total_seats}}</td>
+                <th>Available Seats</th>
+                <td style="width:25%">{{i.game.remaining_seats}}</td>
+            </tr>
+
+            <tr style="height:30px">
+                <th>Vip Seats Price</th>
+                <td style="width:25%">{{i.game.vip_seats_price}}</td>
+                <th>Local Seats Price</th>
+                <td style="width:25%">{{i.game.local_seats_price}}</td>
+            </tr>
+
+
+            <tr style="height:30px">
+                <th>Last Booking</th>
+                <td style="width:25%">{{i.game.last_booking}}</td>
+                <th> Game Date</th>
+                <td style="width:25%">{{i.game.game_date}}</td>
+            </tr>
+
+            <tr style="height:30px">
+                <th>Description</th>
+                <td style="width:25%">{{i.game.description}}</td>
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</td>
+                <td>{{i.created}}</td>
+                <td>{{i.booking_for}}</td>
+                <td>{{i.total_seats}}</td>
+                <td>{{i.total_price}}</td>
+                <td>{{i.get_seat_choices_display}}</td>  
+                <td>{{i.get_status_display}}</td>  
+                <td><button class="btn btn-danger"><a href="/delete_book/{{i.id}}/" onclick="return confirm('Are you sure?')" style="color: white">X</a></button></td> 
+
+            </tr>
+            {% empty %}
+
+            <tr>
+            <td colspan="8">Data Not Found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Booking Id</th>
+                <th>User</th>
+                <th>Game</th>
+                <th>Booking Date</th>
+                <th>Booking For</th>
+                <th>Total Seats</th>
+                <th>Total Price</th>
+                <th>Seat Type</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </tfoot>
+    </table>
+
+
+            {% endif %}
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

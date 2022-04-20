@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<style>
+td{
+	padding:10px;
+	width:30%;
+}
+</style>
+
+<div class="test" id="testimonials">
+	<div class="container">
+					<div class=" test-gri1">
+					 
+					<div class="">
+							<div class="col-md-8 test-grid1">
+								<h3>{{data.game_name}}</h3><hr>
+								<p class="para-w3-agile">
+								{{data.description}}</p>
+								<hr>
+								<table>
+									<tr>
+										<th>Total Seats</th>
+										<td>{{data.total_seats}}</td>
+										<th>Available Seats</th>
+										<td>{{data.remaining_seats}}</td>
+									</tr>
+
+									
+									<tr>
+										<th>Vip Seats Price</th>
+										<td>{{data.vip_seats_price}}</td>
+										<th>Local Seats Price</th>
+										<td>{{data.local_seats_price}}</td>
+									</tr>
+									<tr>
+										<th>Last Booking Date</th>
+										<td>{{data.last_booking}}</td>
+										<th>Concert Date</th>
+										<td>{{data.game_date}} {{data.game_time}}</td>
+
+									</tr>
+								</table>
+								{% if not data.id in li %}
+									<a href="/book_ticket/{{data.id}}/"><button type="button" class="btn btn-primary" style="width:45%;margin:top:10px">Book Now</button></a>
+								{% else %}
+									<a href="#"><button disabled type="button" class="btn btn-default" style="width:45%;margin:top:10px">Book Now</button></a>
+								{% endif %}
+							</div>	
+							<div class="col-md-4">
+								<img src="{{data.image.url}}" alt="" style="border-radius:6px;border:2px solid lightgray">
+							</div>
+						<div class="clearfix"></div>
+					</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

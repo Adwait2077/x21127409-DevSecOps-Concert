@@ -1,0 +1,65 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="w3-agileits-about" id="about">
+		<div class="container">
+				<div class="w3-agileits-about-top">
+						<font face="Open Sans Extrabold" size="6px"><h3>WHY US</h3></font>	
+						<p><b><i><font face="Merriweather" size="5px" >Your Ticket to Tomorrow’s Entertainment -- </font></i></b>We are the global leader in live entertainment, and we're doing more than ever to power your business—for fans and for the future.We are an global online platform for live music and entertainment tickets. We aim to provide ticket buyers with the widest possible choice of tickets to events across the world, and helps ticket sellers ranging from individuals with a spare ticket to large multi-national event organizers reach a global audience.</p>
+					<div class="clearfix"></div>
+				</div>
+				<div class="col-md-4 col-sm-4 w3-agileits-about-grid">
+					<i class="fa fa-shield" aria-hidden="true"></i>
+					<font face="Sans" size="5px" ><h4>FanProtect means every order is guaranteed </h4></font>
+					<p>Every order is 100% guaranteed, with customer service all the way to your seat. We back every order so you can buy and sell tickets with 100% confidence. Trusted by fans worldwide our website lets you buy and sell tickets safely and easily.</p>
+				</div>
+				<div class="col-md-4 col-sm-4 w3-agileits-about-grid">
+			
+					<i class="fa fa-ticket" aria-hidden="true"></i>
+					<h4>Buy tickets with confidence</h4>
+					<p>Your tickets will arrive in time for the event, be valid for entry and exactly what you purchased. If any of these things don't happen, we'll find you comparable or better tickets or offer you a refund or credit for a future order. If your event is cancelled and not rescheduled, you'll get a full refund.</p>
+				</div>
+				<div class="col-md-4 col-sm-4 w3-agileits-about-grid">
+					<i class="fa fa-globe" aria-hidden="true"></i>
+					<h4>A global community</h4>
+					<p>Taking a holiday and want to see an event? Buy tickets from wherever you are for wherever you are going. We have tickets to the top events all over the globe</p>
+				</div>
+				
+				
+				
+				<div class="clearfix"></div>
+			</div>
+	   </div>
+<!-- //about -->
+
+<div class="test" id="testimonials">
+	<div class="container">
+	<div class="col-md-3 test-left-agileinfo">
+	<h3 class="tittle-agileits-w3layouts">FEEDBACK</h3>
+	</div>
+		{% for i in feedback_data %}
+		<div class="col-md-9 test-gr">
+					<div class=" test-gri1">
+					 <div id="owl-demo2" class="owl-carousel">
+							<div class="agile">
+							   	<div class="test-grid">
+							   		<div class="col-md-8 test-grid1">
+										<p class="para-w3-agile">{{i.description}}</p>
+										<h4>{{i.user.first_name}}</h4>
+										<span>{{i.created}}</span>
+									</div>
+									<div class="col-md-4 test-grid2">
+										<img src="{% static 'images/t1.jpg' %}" alt="" class="img-r">
+									</div>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+					</div>
+				</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

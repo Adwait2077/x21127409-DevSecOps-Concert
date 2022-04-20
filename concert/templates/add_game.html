@@ -1,0 +1,131 @@
+{% extends 'Admintemplates/index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">	
+	<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+						<div class="form-title">
+							<h4>{% if game %}Update{% else %}Add{% endif %} Game Details</h4>
+						</div>
+
+			<div class="form-body">
+				<form action="" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+                <div class="row">
+				    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Concert Category</label>
+						<select name="category" required="" class="form-control">
+						{% for i in category %}
+							<option value="{{i.id}}" {% if i.id == game.category.id %} selected {% endif %}>{{i.name}}</option>
+						{% endfor %}
+						</select>
+						<div class="clearfix"> </div>
+						
+					</div>
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Concert Name</label>
+						<input value="{{game.game_name}}"  class="form-control" type="text" name="game_name" placeholder="Game Name" required="" value="">
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Total Seats</label>
+						<input value="{{game.total_seats}}"  class="form-control" type="text" name="total_seats" placeholder="Total Seats" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Total Local Seats</label>
+						<input value="{{game.local_seats}}"  class="form-control" type="text" name="local_seats" placeholder="Total Local Seats" required="">
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Total VIP Seats</label>
+						<input value="{{game.vip_seats}}"  class="form-control" type="text" name="vip_seats" placeholder="Total VIP Seats" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Local Seats Price</label>
+						<input value="{{game.local_seats_price}}"  class="form-control" type="text" name="local_seats_price" placeholder="Local Seats Price" required="">
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>VIP Seats Price</label>
+						<input value="{{game.vip_seats_price}}"  class="form-control" type="text" name="vip_seats_price" placeholder="VIP Seats Price" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+                    <div class="col-md-{% if game %}4 {% else %}6 {% endif %} agileits_agile_about_mail_left">
+						<label>Image</label>
+						<input  class="form-control" type="file" name="image" {% if not game %}required=""{% endif %}>
+
+					<div class="clearfix"> </div>
+					</div>
+
+				   {% if game %}
+					<div class="col-md-2 agileits_agile_about_mail_left">
+					<img src = "{{game.image.url}}" style = "width:120px;height:120px">
+					<div class="clearfix"> </div>
+					</div>
+				{% endif %}
+				</div>
+
+
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Concert Date</label>
+						<input value="{{game.game_date|date:'Y-m-d'}}"  class="form-control" type="date" name="game_date" placeholder="Game Date" required="">
+					<div class="clearfix"> </div>
+					</div>
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Concert Time</label>
+						<input value="{{game.game_time|time:'h:i:s'}}"  class="form-control" type="time" name="game_time" placeholder="Game Time" required="">
+	
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Last Booking Date</label>
+						<input value="{{game.last_booking|date:'Y-m-d'}}"  class="form-control" type="date" name="last_booking" placeholder="Last Booking Date" required="">
+
+					<div class="clearfix"> </div>
+					</div>
+
+
+
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Description</label>
+						<textarea  class="form-control"  name="description" >
+						{{game.description}}
+					</textarea>
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+                    
+					<div class="submit pull-right">
+						<input  class="form-control btn btn-primary mb-2" type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

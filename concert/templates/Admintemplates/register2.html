@@ -1,0 +1,105 @@
+{% extends 'Admintemplates/index.html' %}
+{% load static %}
+{% block body %}  
+
+<style>
+
+	input{
+		margin-bottom:20px;
+	}
+	span{
+		font-size:14px;
+
+}
+</style>
+
+<div class="container">	
+	<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+						<div class="form-title">
+							<h4>{% if profile %}Edit User Information {% else %}Register With Us{% endif %}</h4>
+						</div>
+
+			<div class="form-body">
+				<form action="{% if profile %}/edit_user2/{{profile.id}}/{% else %}/register2/{% endif %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Username</label>
+						<input class="form-control" type="text" name="username" placeholder="Username" value="{{profile.user.username}}" required="" {% if profile %}readonly{% endif %}>
+					<div class="clearfix"> </div>
+					</div>
+                    <div class="col-md-6 agileits_agile_about_mail_left" {% if profile %}hidden{% endif %}>
+						<label>Password</label>
+						<input class="form-control" type="password" name="password" placeholder="Password" required="">
+					<div class="clearfix"> </div>
+					</div>
+				
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Email</label>
+						<input class="form-control" type="email" name="email" placeholder="Email" required="" value="{{profile.user.email}}">
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+					    <label>First Name</label>
+						<input class="form-control" type="text" name="first_name" placeholder="First Name" required="" value="{{profile.user.first_name}}">
+					<div class="clearfix"> </div>
+					</div>
+				
+				    <div class="col-md-6 agileits_agile_about_mail_left">
+					    <label>Last Name</label>
+						<input class="form-control" type="text" name="last_name" placeholder="Last Name" required="" value="{{profile.user.last_name}}">
+					<div class="clearfix"> </div>
+					</div>
+
+					
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Phone</label>
+						<input class="form-control" type="text" name="contact_no" placeholder="Phone" required="" value="{{profile.contact_no}}">
+					<div class="clearfix"> </div>
+					</div>
+				
+				    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>City</label>
+						<input class="form-control" type="text" name="city" placeholder="City" required="" value="{{profile.city}}">
+					<div class="clearfix"> </div>
+					</div>
+
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Address</label>
+						<input class="form-control" type="text" name="address" placeholder="Address" required="" value="{{profile.address}}">
+					<div class="clearfix"> </div>
+					</div>
+			
+				    <div class="col-md-{% if profile %}4 {% else %}6 {% endif %} agileits_agile_about_mail_left">
+						<label>Images</label>
+						<input class="form-control" type="file" name="images" {% if not profile %}required=""{% endif %}>
+						<span>{{profile.images}}</span>
+					<div class="clearfix"> </div>
+					</div>
+					{% if profile %}
+				    <div class="col-md-2 agileits_agile_about_mail_left">
+						<img src = "{{profile.images.url}}" style = "width:120px;height:120px">
+						<div class="clearfix"> </div>
+					</div>
+					{% endif %}
+				</div>
+
+                    
+					<div class="submit pull-right">
+						<input class="form-control" type="submit" value="Submit">
+					</div>
+				</form>
+				</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<!-- inner page banner -->
+<section class="inner_banner">
+	<div class="dot1">
+	</div>
+</section>
+<!-- inner page banner -->
+
+<!-- contact -->
+<section class="contact py-5">
+	<div class="map">
+		<div class="agile_about contact" id="contact">
+
+		<div class="agileits_agile_contact_form">
+			<h3>User Feedback</h3>
+										
+	<div class="container">	
+			<div class="agileits_agile_about_mail">
+				<form action="" method="post">
+				{% csrf_token %}
+
+                <div class="row">
+
+					<div class="col-md-12 agileits_agile_about_mail_left">
+						<input type="text" name="username" placeholder="First Name" value="{{request.user.username}}" readonly required="">
+					<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+                <div class="row">
+
+                    <div class="col-md-12 agileits_agile_about_mail_left">
+						<textarea type="text" name="description" placeholder="Description" required=""></textarea>
+					<div class="clearfix"> </div>
+					</div>
+				</div>   
+
+					<div class="submit pull-right">
+						<input type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>			
+</section>		
+
+<!-- //Newsletter -->
+{% endblock %}

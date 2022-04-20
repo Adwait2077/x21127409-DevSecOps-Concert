@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="team" id="team">
+		<div class="container">
+			<div class="w3-team-head">
+				<h3>All Concerts</h3>
+				</div>
+			<div class="agile_team_grids">
+
+            {% for i in game %}
+				<div class="col-md-3 agile_team_grid team-left-w3l-agile">
+					<div class="agile_team_grid_main">
+						<img src="{{i.image.url}}" alt=" " class="img-responsive" style="width:300px;height:300px"/>
+						<div class="p-mask">
+							
+						</div>
+					</div>
+					<div class="agile_team_grid1">
+						<h3>{{i.game_name}}</h3>
+						<p>{{i.description}}</p>
+					</div>
+					{% if not i.id in li %}
+                    	<a href="/book_ticket/{{i.id}}/"><button type="button" class="btn btn-primary" style="width:45%">Book Now</button></a>
+					{% else %}
+					<a href="#"><button type="button" class="btn btn-default" style="width:45%">Book Now</button></a>
+                    {% endif %}
+					<a href="/game_detail/{{i.id}}/"><button type="button" class="btn btn-success" style="width:45%">Detail</button></a>
+				</div>
+            {% endfor %}
+				
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

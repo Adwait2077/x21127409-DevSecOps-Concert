@@ -1,0 +1,107 @@
+{% extends 'Admintemplates/index.html' %}
+{% load static %}
+{% block body %}  
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ]
+    } );
+} );
+</script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.0.0/css/buttons.dataTables.min.css">
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.0.0/js/buttons.html5.min.js"> </script>
+
+<div class="container">	
+	<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+						<div class="form-title">
+							<h4>Unread FeedBack</h4>
+						</div>
+
+<table id="example" class="display table" style="width:100%">
+        <thead class="table-light">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name </th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in feedback_info %}
+            <tr>
+                <td>{{i.user.first_name}}</td>
+                <td>{{i.user.last_name}}</td>
+                <td>{{i.user.email}}</td>
+                <td>{{i.get_feedback_status_display}}</td>
+                <td><button  class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal-{{forloop.counter}}">
+                <a href="#" onclick="setTimeout(cali({{i.id}}), 2000)" style = "color: white">View_Details</a></button></td>
+
+            <!-- Modal -->
+            <div id="myModal-{{forloop.counter}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                <div class="modal-header">
+                    <a href="{% url 'change_FeedBack_status' i.id %}"><button type="button" class="close">&times;</button></a>
+                    <h4 class="modal-title">Description</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{i.description}}</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{% url 'change_FeedBack_status' i.id %}"><button type="button" class="btn btn-default">Close</button></a>
+                </div>
+                </div>
+
+            </div>
+            </div>
+
+            </tr>
+            {% empty %}
+
+            <tr>
+            <td colspan="8">Data Not Found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name </th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+        </tfoot>
+    </table>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+
+{% endblock %}

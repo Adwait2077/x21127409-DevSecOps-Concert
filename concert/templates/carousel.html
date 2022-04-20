@@ -1,0 +1,333 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+	<div class="banner-silder" id="home">
+		<div id="JiSlider" class="jislider">
+			<ul>
+				<li>
+					<div class="w3layouts-banner-top">
+
+							<div class="container">
+								<div class="agileits-banner-info">
+									
+								</div>	
+							</div>
+						</div>
+				</li>
+				<li>
+						<div class="w3layouts-banner-top w3layouts-banner-top1">
+						<div class="container">
+								<div class="agileits-banner-info">
+									<h3></h3>
+									 <p>BOOKINGS NOW!!!</p>
+									
+								</div>	
+							</div>
+						</div>
+				</li>
+				<li>
+						<div class="w3layouts-banner-top w3layouts-banner-top2">
+							<div class="container">
+								<div class="agileits-banner-info">
+									<p>Enjoy the Music Festival</p>
+									
+								</div>	
+								
+							</div>
+						</div>
+					</li>
+
+			</ul>
+		</div>
+		{% comment %} <!-- banner-bottom -->
+	<div class="banner-bottom">
+		<div class="container">
+			<div class="banner_bottom_agile_grids">
+				<div class="wthree_banner_bottom_right_grids">
+					<div class="col-md-3 banner_bottom_right_grid">
+						<div class="view view-tenth">
+							<div class="agile_text_box">
+								<i class="fa fa-eye" aria-hidden="true"></i>
+								<h3> Ed-Sheeran's Concert 2021</h3>
+								<p>One of the images took in Ed-Sheeran's 2021 Concert........</p>
+							</div>
+							<div class="mask">
+								<img src="{% static 'images/a1.jpg' %}" class="img-responsive" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 banner_bottom_right_grid">
+						<div class="view view-tenth">
+							<div class="agile_text_box">
+								<i class="fa fa-building-o" aria-hidden="true"></i>
+								<h3> Dorem footb</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+							</div>
+							<div class="mask">
+								<img src="{% static 'images/a2.jpg' %}" class="img-responsive" alt="" />
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-md-3 banner_bottom_right_grid">
+						<div class="view view-tenth">
+							<div class="agile_text_box">
+								<i class="fa fa-eraser" aria-hidden="true"></i>
+								<h3>Forem check </h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+							</div>
+							<div class="mask">
+								<img src="{% static 'images/a3.jpg' %}" class="img-responsive" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 banner_bottom_right_grid">
+						<div class="view view-tenth">
+							<div class="agile_text_box">
+								<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+								<h3>Jipsu game</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+							</div>
+							<div class="mask">
+								<img src="{% static 'images/a1.jpg' %}" class="img-responsive" alt="" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+		</div>
+	</div>
+</div>
+<!-- banner-bottom --> {% endcomment %}
+
+      </div>
+
+<!-- //banner -->
+	<!-- about -->
+
+<!-- stats -->
+	<div class="stats" id="stats">
+	    <div class="container"> 
+			<div class="inner_w3l_agile_grids">
+		<div class="col-md-3 w3layouts_stats_left w3_counter_grid">
+		   <i class="fa fa-list-alt" style="color:rgb(253, 249, 0)" aria-hidden="true"></i>
+			<p class="counter">{{game_cat}}</p>
+			<h3>Total Concerts Category</h3>
+		</div>
+		<div class="col-md-3 w3layouts_stats_left w3_counter_grid1">
+		    <i class="fa fa-music" style="color:rgb(253, 249, 0)" aria-hidden="true"></i>
+			<p class="counter">{{game}}</p>
+			<h3>Total Concerts</h3>
+		</div>
+		<div class="col-md-3 w3layouts_stats_left w3_counter_grid2">
+		<i class="fa fa-ticket" style="color:rgb(253, 249, 0)" aria-hidden="true"></i>
+			<p class="counter">{{book}}</p>
+			<h3>Total Bookings</h3>
+		</div>
+		<div class="col-md-3 w3layouts_stats_left w3_counter_grid3">
+		<i class="fa fa-user" style="color:rgb(253, 249, 0)" aria-hidden="true"></i>
+			<p class="counter">{{total_user}}</p>
+			<h3>Total Users</h3>
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+   </div>	
+</div>
+<!-- //stats -->
+<!-- team -->
+	<div class="team" id="team">
+		<div class="container">
+			<div class="w3-team-head">
+				<h3>UPCOMING CONCERTS</h3>
+				</div>
+			<div class="agile_team_grids">
+				{% for i in game_data %}
+				<a href="/game_detail/{{i.id}}/">
+				<div class="col-md-3 agile_team_grid team-left-w3l-agile">
+					<div class="agile_team_grid_main">
+						<img src="{{i.image.url}}" alt=" " class="img-responsive" style= "width:250px;height:250px"/>
+						
+					</div>
+					<div class="agile_team_grid1">
+						<a href="/game_detail/{{i.id}}/">
+							<h3>{{i.game_name}}</h3>
+							<p>{{i.description}}</p></a>
+					</div>
+				</div>
+				</a>
+				{% endfor %}
+				<div class="clearfix"> </div>
+			</div>
+		</div>
+	</div>
+<!-- //team -->
+
+<!-- works -->
+	<div class="works" id="gallery">
+		<div class="container">
+			<div class="services-heading">
+				<h3>Concerts and Singers </h3>
+				<div class="border border2"> </div>
+			</div>
+			<div class="gallery-grids">
+				<div class="col-md-6 gallery-grids-left">
+					<div class="gallery-grid">
+						<a class="example-image-link" href="{% static 'images/w1.jpg' %}" data-lightbox="example-set" data-title="Ed-Sheeran's Concert 2021, One of the images took in Ed-Sheeran's 2021 Concert........">
+							<img src="{% static 'images/w1.jpg' %}" alt="" />
+						</a>
+					</div>
+					<div class="gallery-grids-left-sub">
+						<div class="col-md-6 gallery-grids-left-subl">
+							<div class="gallery-grid"><a class="example-image-link" href="{% static 'images/w2.jpg' %}" data-lightbox="example-set" data-title=" 3 Arena Concert November 2021">
+									<img src="{% static 'images/w2.jpg' %}" alt="" />
+								</a>
+							</div>
+							<div class="gallery-grid gallery-grid-sub">
+								<a class="example-image-link" href="{% static 'images/w3.jpg' %}" data-lightbox="example-set" data-title="One of the music legend Bob Marley performing in a concert!!!">
+									<img src="{% static 'images/w3.jpg' %}" alt="" />
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 gallery-grids-left-subr">
+							<div class="gallery-grid">
+								<a class="example-image-link" href="{% static 'images/w4.jpg' %}" data-lightbox="example-set" data-title="Live rock music concert held in March 2019.">
+									<img src="{% static 'images/w4.jpg' %}" alt="" />
+								</a>
+							</div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+				<div class="col-md-6 gallery-grids-left">
+					<div class="col-md-6 gallery-grids-right">
+						<div class="gallery-grid">
+							<a class="example-image-link" href="{% static 'images/w5.jpg' %}" data-lightbox="example-set" data-title="Shawn Mendes one of the singers!!!!!! ">
+								<img src="{% static 'images/w5.jpg' %}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="col-md-6 gallery-grids-right">
+						<div class="gallery-grid">
+							<a class="example-image-link" href="{% static 'images/w6.jpg' %}" data-lightbox="example-set" data-title="One of the best Pop-Artist Eminem ">
+								<img src="{% static 'images/w6.jpg' %}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+					<div class="gallery-grids-right1">
+						<div class="gallery-grid">
+							<a class="example-image-link" href="{% static 'images/w7.jpg' %}" data-lightbox="example-set" data-title="Live pop music concert held in June 2020. It was one of the biggest attended event that year!!!!">
+								<img src="{% static 'images/w7.jpg' %}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="col-md-6 gallery-grids-right">
+						<div class="gallery-grid">
+							<a class="example-image-link" href="{% static 'images/w8.jpg' %}" data-lightbox="example-set" data-title=" Bruno Mars Famous for his songs such as Uptown-Funk-you Up & 24K Magic">
+								<img src="{% static 'images/w8.jpg' %}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="col-md-6 gallery-grids-right">
+						<div class="gallery-grid">
+							<a class="example-image-link" href="{% static 'images/w9.jpg' %}" data-lightbox="example-set" data-title="Maroon 5 one of the best band group which has given us few of the best hits">
+								<img src="{% static 'images/w9.jpg' %}" alt="" />
+							</a>
+						</div>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+				<script src="{% static 'js/lightbox-plus-jquery.min.js' %}"> </script>
+			</div>
+		</div>
+	</div>
+	<!-- //works -->
+
+<!-- agile_testimonials -->
+<div class="test" id="testimonials">
+	<div class="container">
+	<div class="col-md-3 test-left-agileinfo">
+	<h3 class="tittle-agileits-w3layouts">Feedback</h3> 
+	</div>
+		{% for i in feedback_data %}
+		<div class="col-md-9 test-gr">
+					<div class=" test-gri1">
+					 <div id="owl-demo2" class="owl-carousel">
+							<div class="agile">
+							   	<div class="test-grid">
+							   		<div class="col-md-8 test-grid1">
+										<p class="para-w3-agile">{{i.description}}</p>
+										<h4>{{i.user.first_name}}</h4>
+										<span>{{i.created}}</span>
+									</div>	
+									<div class="col-md-4 test-grid2">
+										<img src="{% static 'images/t1.jpg' %}" alt="" class="img-r">
+									</div>
+								</div>	
+								<div class="clearfix"></div>
+							</div>
+					</div>
+				</div>	
+		{% endfor %}
+		</div>
+	</div>
+</div>
+<!-- //agile_testimonials -->
+<!-- /live match -->
+<div class="banner-info">
+	<div class="dott">
+    <div class="wrapper agileinfo">
+	<h3>THE BIGGEST CONCERT WILL START IN</h3>
+        <div class="clock">
+            <div class="column w3l days">
+                <div class="timer w3" id="days"></div>
+                <div class="aits text">DAYS</div>
+            </div>
+            <div class="column w3">
+                <div class="timer w3layouts" id="hours"></div>
+                <div class="agileits text">HOURS</div>
+            </div>
+         
+            <div class="column wthree">
+                <div class="timer w3las" id="minutes"></div>
+                <div class="text aits">MINUTES</div>
+            </div>
+            
+            <div class="column siteliga">
+                <div class="timer stuoyal3w" id="seconds"></div>
+                <div class="text wthree">SECONDS</div>
+            </div>
+        </div>
+			<div class="w3-border-bottom">
+				<h3>ARE YOU READY!!!!!!</h3>
+			</div>
+          
+        
+    </div>
+</div>
+</div>
+
+<!-- //live match -->
+<!-- contact -->
+
+<!-- //contact -->
+
+<!-- map -->
+<div class="map">
+	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2381.8296804664983!2d-6.229076430024813!3d53.346304991152806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670ef2ba5bd0ff%3A0xc462cb2728687754!2s3Arena!5e0!3m2!1sen!2sie!4v1650202053911!5m2!1sen!2sie" width="600" height="800" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>	
+</div>
+
+
+
+<!-- /contact bottom -->
+
+</div><!-- End Box -->
+  
+</div><!-- End Main Container -->
+		</div>
+		<div class="clearfix"></div>
+	</div>
+{% endblock %}

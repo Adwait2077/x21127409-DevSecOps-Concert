@@ -1,0 +1,130 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="agile_about contact" id="contact">
+
+		<div class="agileits_agile_contact_form">
+			<h3>Booking Details</h3>
+										
+	<div class="container">	
+			<div class="agileits_agile_about_mail">
+				<form action="" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+					<label>Concert Name</label>
+						<input type="text" name="game_" id="game" value="{{game.game_name}}" onkeyup="cal()" readonly>							<option value="{{game.id}}">{{game.game_name}}</option>
+						<input type="hidden" name="game" id="game" value="{{game.id}}" onkeyup="cal()" readonly>							<option value="{{game.id}}">{{game.game_name}}</option>
+						<input type="hidden" id="local_seats_price" value="{{game.local_seats_price}}">
+						<input type="hidden" id="vip_seats_price" value="{{game.vip_seats_price}}">
+						<input type="hidden" id="silver_seats_price" value="{{game.silver_seats_price}}">
+						<input type="hidden" id="golden_seats_price" value="{{game.golden_seats_price}}">
+						<input type="hidden" id="platinum_seats_price" value="{{game.platinum_seats_price}}">
+						<input type="hidden" id="medium_seats_price" value="{{game.medium_seats_price}}">
+						<input type="hidden" id="remaining_seats" value="{{game.remaining_seats}}">
+						</select>
+					<div class="clearfix"> </div>
+					</div>
+
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<label>Booking For</label>
+						<input type="date" name="booking_for" placeholder="Booking for which day"  readonly style="height:50px; margin-bottom:15px;" value="{{game.game_date|date:'Y-m-d'}}">
+					<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+		
+				<div class="row">
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+					<label>Seat Type</label>
+						<select name="seat_choices" required="" id="seat_choice"  onchange="cal()">
+						{% for j in seat %}
+							<option value="{{j.0}}">{{j.1}}</option>
+						{% endfor %}
+						</select>
+					<div class="clearfix"> </div>
+					</div>
+                    
+					<div class="col-md-6 agileits_agile_about_mail_left">
+					<label>Total Seats</label>
+						<input type="text" name="total_seats" id="total_seats" placeholder="Enter No. of Seats u want to Book ?" required=""  onkeyup="cal()">
+					<div class="clearfix"> </div>
+					</div>
+
+                    
+				</div>
+				<div class="row">
+					<div class="col-md-6 agileits_agile_about_mail_left">
+					<label>Available Seats</label>
+						<input type="text" name="available_seats" id="available_seats" readonly>
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+					<label>Total Price</label>
+						<input type="text" name="total_price" id="total_price" placeholder="Total Price" required="" readonly>
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+
+
+
+                
+                    <br>
+					<div class="submit pull-right mt-3">
+						<input type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	function cal(){
+		var game_name = document.getElementById('game');
+		var seat = document.getElementById('seat_choice');
+		var totalseat = document.getElementById('total_seats');
+		var avail_seats = document.getElementById('available_seats');
+		var total_price = document.getElementById('total_price');
+		var remaining_seats = document.getElementById('remaining_seats');
+		var medium_seats_price = document.getElementById('medium_seats_price');
+		var platinum_seats_price = document.getElementById('platinum_seats_price');
+		var golden_seats_price = document.getElementById('golden_seats_price');
+		var silver_seats_price = document.getElementById('silver_seats_price');
+		var vip_seats_price = document.getElementById('vip_seats_price');
+		var local_seats_price = document.getElementById('local_seats_price');
+
+		var check_seat = remaining_seats.value - totalseat.value ;
+		if (check_seat < 0){
+			alert("Seat is full, available seat = "+ remaining_seats.value);
+			document.getElementById('total_seats').value = "";
+			return false;
+		}
+
+		if(seat.value == "1"){
+		total_price.value =totalseat.value * vip_seats_price.value;
+		}
+		if(seat.value == "2"){
+			total_price.value = totalseat.value * local_seats_price.value;
+		}
+		if(seat.value == "3"){
+			total_price.value =totalseat.value * medium_seats_price.value;
+		}
+		if(seat.value == "4"){
+			total_price.value =totalseat.value * platinum_seats_price.value;
+		}
+		if(seat.value == "5"){
+			total_price.value =totalseat.value * silver_seats_price.value;
+		}
+		if(seat.value == "6"){
+			total_price.value =totalseat.value * golden_seats_price.value;
+		}
+		avail_seats.value  = remaining_seats.value;
+
+	}
+</script>
+
+{% endblock %}

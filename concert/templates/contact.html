@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<!-- inner page banner -->
+<section class="inner_banner">
+	<div class="dot1">
+	</div>
+</section>
+<!-- inner page banner -->
+
+<!-- contact -->
+<section class="contact py-5">
+	<h1 class="heading text-center text-uppercase mb-5"> Have Any Queries?? Get In Touch!!!!</h1>
+	<div class="map">
+		<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2381.829679972239!2d-6.2290764!3d53.346305!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670ef2ba5bd0ff%3A0xc462cb2728687754!2s3Arena!5e0!3m2!1sen!2sie!4v1650216772758!5m2!1sen!2sie" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<div class="agile_about contact" id="contact">
+
+		<div class="agileits_agile_contact_form">
+			<h3>Contact Us</h3>
+										
+	<div class="container">	
+			<div class="agileits_agile_about_mail">
+				<form action="" method="post">
+				{% csrf_token %}
+
+                <div class="row">
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<input type="text" name="first_name" placeholder="First Name" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<input type="text" name="last_name" placeholder="Last Name" required="">
+					<div class="clearfix"> </div>
+					</div>
+
+				</div>
+
+                <div class="row">
+                    
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<input type="email" name="email" placeholder="Email" required="">
+					<div class="clearfix"> </div>
+					</div>
+					
+
+					<div class="col-md-6 agileits_agile_about_mail_left">
+						<input type="text" name="contact_no" placeholder="Phone" required="">
+					<div class="clearfix"> </div>
+					</div>
+				</div>
+
+                    
+                
+                <div class="row">
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<textarea type="text" name="address" placeholder="Address" required=""></textarea>
+					<div class="clearfix"> </div>
+					</div>
+                    <div class="col-md-6 agileits_agile_about_mail_left">
+						<textarea name="description" placeholder="Type Your Message" required="" rows="2"></textarea>
+					<div class="clearfix"> </div>
+					</div>
+				</div>   
+
+					<div class="submit pull-right">
+						<input type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+	</div>			
+</section>		
+
+<!-- //Newsletter -->
+{% endblock %}

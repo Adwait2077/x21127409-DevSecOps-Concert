@@ -1,0 +1,53 @@
+{% extends 'Admintemplates/index.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container">	
+	<div id="page-wrapper">
+			<div class="main-page">
+				<div class="forms">
+					<h2 class="title1"></h2>
+					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
+						<div class="form-title">
+							<h4>{% if game %}Update{% else %}Add{% endif %} Game Category Details</h4>
+						</div>
+
+			<div class="form-body">
+				<form action="{% if game %}/change_game_category/{{game.id}}/{% else %}/add_game_category/{% endif %}" method="post" enctype="multipart/form-data">
+				{% csrf_token %}
+
+                <div class="row">
+                <label>Game Category</label>
+                    <div class="col-md-12 agileits_agile_about_mail_left">
+						<input value="{{game.name}}"  class="form-control" type="text" name="name" placeholder="Category Name" required="">
+					<div class="clearfix"> </div>
+					</div>
+              
+                    <div class="col-md-{% if game %}9{% else %}12{% endif %} agileits_agile_about_mail_left">
+                    <label>Image</label>
+						<input  class="form-control" type="file" name="image" {% if not game %}required=""{% endif %}>
+						<span>{{game.image}}</span>
+					<div class="clearfix"> </div>
+					</div>
+
+                {% if game %}
+                    <div class="col-md-3 agileits_agile_about_mail_left">
+						<img src="{{game.image.url}}" style="width:120px">
+					<div class="clearfix"> </div>
+					</div>
+                {% endif %}
+				</div>
+
+                    
+					<div class="submit pull-right">
+						<input  class="form-control btn btn-primary mb-2" type="submit" value="Submit">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+
+{% endblock %}
