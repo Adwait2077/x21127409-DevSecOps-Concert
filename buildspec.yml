@@ -10,6 +10,8 @@ phases:
     pre_build:
         commands:
             - python --version
+            - pylint concert/*.py
+            - pylint ConcertBooking/*.py
     
 artifacts:
     files:
