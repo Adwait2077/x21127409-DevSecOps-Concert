@@ -9,7 +9,7 @@
 					<h2 class="title1"></h2>
 					<div class="form-grids row widget-shadow" data-example-id="basic-forms"> 
 						<div class="form-title">
-							<h4>{% if game %}Update{% else %}Add{% endif %} Game Category Details</h4>
+							<h4>{% if game %}Update{% else %}Add{% endif %} Singer Details</h4>
 						</div>
 
 			<div class="form-body">
@@ -17,7 +17,7 @@
 				{% csrf_token %}
 
                 <div class="row">
-                <label>Game Category</label>
+                <label>Singer</label>
                     <div class="col-md-12 agileits_agile_about_mail_left">
 						<input value="{{game.name}}"  class="form-control" type="text" name="name" placeholder="Category Name" required="">
 					<div class="clearfix"> </div>
